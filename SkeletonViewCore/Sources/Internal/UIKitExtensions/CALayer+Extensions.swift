@@ -90,7 +90,7 @@ extension CALayer {
         DispatchQueue.main.async {
             CATransaction.begin()
             CATransaction.setDisableActions(true)
-            insertSublayer(sublayer.contentLayer, at: index)
+            self.insertSublayer(sublayer.contentLayer, at: index)
             CATransaction.commit()
             switch transition {
             case .none:
