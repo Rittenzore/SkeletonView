@@ -32,7 +32,6 @@ extension UIView: Recoverable {
             
             self.layer.cornerRadius = storedViewState.cornerRadius
             self.layer.masksToBounds = storedViewState.clipToBounds
-            self.layer.borderColor = storedViewState.borderColor
             
             if self.isUserInteractionDisabledWhenSkeletonIsActive {
                 self.isUserInteractionEnabled = storedViewState.isUserInteractionsEnabled
