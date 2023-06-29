@@ -180,7 +180,7 @@ extension UIButton {
         startTransition { [weak self] in
             if self?.title(for: .normal) == nil {
                 self?.setTitle(self?.buttonState?.title, for: .normal)
-                self?.titleLabel?.textColor = self?.buttonState?.titleColor
+                self?.setTitleColor(self?.buttonState?.titleColor, for: .normal)
             }
             
             if self?.image(for: .normal) == nil {
