@@ -38,10 +38,12 @@ struct SkeletonLayer {
     }
 
     func layoutIfNeeded() {
-        if let bounds = holder?.definedMaxBounds {
-            maskLayer.bounds = bounds
+        UIView.performWithoutAnimation {
+            if let bounds = holder?.definedMaxBounds {
+                maskLayer.bounds = bounds
+            }
+            updateLinesIfNeeded()
         }
-        updateLinesIfNeeded()
     }
     
     func removeLayer(transition: SkeletonTransitionStyle, completion: (() -> Void)? = nil) {
