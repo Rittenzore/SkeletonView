@@ -7,7 +7,7 @@ extension UIView {
     func startTransition(transitionBlock: @escaping () -> Void) {
         guard let transitionStyle = _currentSkeletonConfig?.transition,
               transitionStyle != .none else {
-            UIView.performWithoutAnimation(transitionBlock)
+            transitionBlock()
             return
         }
         
