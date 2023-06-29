@@ -53,12 +53,10 @@ extension CALayer {
     
     func playAnimation(_ anim: @escaping SkeletonLayerAnimation, key: String, completion: (() -> Void)? = nil) {
         skeletonSublayers.recursiveSearch(leafBlock: {
-            DispatchQueue.main.async {
-                CATransaction.begin()
-                CATransaction.setCompletionBlock(completion)
-                self.add(anim(self), forKey: key)
-                CATransaction.commit()
-            }
+            CATransaction.begin()
+            CATransaction.setCompletionBlock(completion)
+            add(anim(self), forKey: key)
+            CATransaction.commit()
         }) {
             $0.playAnimation(anim, key: key, completion: completion)
         }
@@ -73,17 +71,15 @@ extension CALayer {
     }
     
     func setOpacity(from: Int, to: Int, duration: TimeInterval, completion: (() -> Void)?) {
-        DispatchQueue.main.async {
-            CATransaction.begin()
-            CATransaction.setCompletionBlock(completion)
-            let animation = CABasicAnimation(keyPath: #keyPath(CALayer.opacity))
-            animation.fromValue = from
-            animation.toValue = to
-            animation.duration = duration
-            animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-            self.add(animation, forKey: "setOpacityAnimation")
-            CATransaction.commit()
-        }
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+        let animation = CABasicAnimation(keyPath: #keyPath(CALayer.opacity))
+        animation.fromValue = from
+        animation.toValue = to
+        animation.duration = duration
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        add(animation, forKey: "setOpacityAnimation")
+        CATransaction.commit()
     }
     
     func insertSkeletonLayer(_ sublayer: SkeletonLayer, atIndex index: UInt32, transition: SkeletonTransitionStyle, completion: (() -> Void)? = nil) {
