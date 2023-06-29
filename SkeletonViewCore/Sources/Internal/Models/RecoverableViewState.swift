@@ -82,9 +82,9 @@ struct RecoverableButtonViewState {
     init(view: UIButton) {
         self.state = view.state
         self.attributedTitle = view.attributedTitle(for: state)
-        self.title = view.title(for: state)
+        self.title = view.titleLabel?.text
         self.titleColor = view.titleColor(for: state)
-        self.image = view.image(for: state)
+        self.image = view.imageView?.image
         self.backgroundImage = view.backgroundImage(for: state)
     }
 }
