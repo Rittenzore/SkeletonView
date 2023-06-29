@@ -178,26 +178,12 @@ extension UIButton {
     override func recoverViewState(forced: Bool) {
         super.recoverViewState(forced: forced)
         startTransition { [weak self] in
-            guard let self = self, let buttonState = self.buttonState else { return }
-            
-            let state = buttonState.state
-            
-            if let attributedTitle = buttonState.attributedTitle, self.attributedTitle(for: state) == nil || forced {
-                self.setAttributedTitle(attributedTitle, for: state)
-            } else if let title = buttonState.title, self.title(for: state) == nil || forced {
-                self.setTitle(title, for: state)
-                
-                if let titleColor = buttonState.titleColor, self.titleColor(for: state) == nil || forced {
-                    self.setTitleColor(titleColor, for: state)
-                }
+            if self?.title(for: .normal) == nil {
+                self?.setTitle(self?.buttonState?.title, for: .normal)
             }
             
-            if let image = buttonState.image, self.image(for: state) == nil || forced {
-                self.setImage(image, for: state)
-            }
-            
-            if let backgroundImage = buttonState.backgroundImage, self.backgroundImage(for: state) == nil || forced {
-                self.setBackgroundImage(backgroundImage, for: state)
+            if self?.image(for: .normal) == nil {
+                self?.setImage(self?.buttonState?.image, for: .normal)
             }
         }
     }
