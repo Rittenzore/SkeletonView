@@ -4,7 +4,9 @@ import UIKit
 
 extension UIView {
     
-    func startTransition(transitionBlock: @escaping () -> Void) {        
+    func startTransition(transitionBlock: @escaping () -> Void) {
+        layoutIfNeeded()
+        
         guard let transitionStyle = _currentSkeletonConfig?.transition,
               transitionStyle != .none else {
             transitionBlock()
