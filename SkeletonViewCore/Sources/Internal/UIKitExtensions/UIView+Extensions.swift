@@ -163,10 +163,7 @@ extension UIView {
 
     func layoutSkeletonLayerIfNeeded() {
         guard let skeletonLayer = _skeletonLayer else { return }
-        CATransaction.begin()
-        CATransaction.setValue(kCFBooleanTrue, forKey: kCATransactionDisableActions)
         skeletonLayer.layoutIfNeeded()
-        CATransaction.commit()
     }
     
     func removeSkeletonLayer() {
