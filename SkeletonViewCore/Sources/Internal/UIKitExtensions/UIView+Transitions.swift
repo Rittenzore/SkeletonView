@@ -5,8 +5,8 @@ import UIKit
 extension UIView {
     
     func startTransition(transitionBlock: @escaping () -> Void) {
-        superview?.setNeedsLayout()
-        superview?.layoutIfNeeded()
+//        superview?.setNeedsLayout()
+//        superview?.layoutIfNeeded()
 //        setNeedsLayout()
 //        layoutIfNeeded()
         
