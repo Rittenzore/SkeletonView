@@ -7,8 +7,8 @@ extension UIView {
     func startTransition(transitionBlock: @escaping () -> Void) {
         superview?.setNeedsLayout()
         superview?.layoutIfNeeded()
-        setNeedsLayout()
-        layoutIfNeeded()
+//        setNeedsLayout()
+//        layoutIfNeeded()
         
         guard let transitionStyle = _currentSkeletonConfig?.transition,
               transitionStyle != .none else {
